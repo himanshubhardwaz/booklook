@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Rent</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    <!-- Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" />
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../assets/css/styles.css" rel="stylesheet">
+    <style>
+        .bh {
+            width: 70%;
+            margin-left: 15%;
+        }
+
+        .table,
+        .td {
+            width: 100%;
+            border: none;
+        }
+
+        .td {
+            display: block;
+            box-sizing: border-box;
+            clear: both;
+        }
+
+        .btn {
+            text-align: center;
+            word-spacing: 100px;
+        }
+
+        .table-bordered {
+            border: none;
+        }
+
+        .info-table {
+            width:auto;
+            border: none;
+            
+        }
+        
+
+        .dispnone {
+            display: none;
+        }
+
+        #inlineCheckbox1:checked {
+            background-color: green;
+        }
+
+        #inlineCheckbox2:checked {
+            background-color: rgb(13, 202, 240);
+        }
+
+        #inlineCheckbox3:checked {
+            background-color: rgb(184, 184, 0);
+        }
+
+        #inlineCheckbox4:checked {
+            background-color: rgb(207, 83, 49);
+        }
+
+        /* .info-table tr td:nth-child(1) {
+        } */
+        .info-table tr td:nth-child(1) {
+            width: 50%;
+            padding: 5px 50px;
+        }
+        .info-table tr td:nth-child(2) {
+            width: 50%;
+            padding: 5px 0px;
+        }
+
+        .collapse.show {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .fp {
+            text-decoration: none;
+        }
+
+        .table-head {
+            align-items: right;
+            border: none;
+            width: 70%;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .collapse.show{
+            background: rgba(255, 255, 255, 0.05);
+            transition: background 0.25s;
+          }
+
+        .table-head tr th {
+            font-weight: 900;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: large;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript" language="javascript">
+        function ClearForm() {
+            document.MyForm.reset();
+        }
+    </script>
+</head>
+
+<body id="page-top" class="signinbody" onload="ClearForm()">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top py-3" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#page-top">Book Look</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/users/profile">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/users/borrow">Borrow</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/users/return">Return</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/users/sign-out">Sign Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Masthead-->
+
+    <div class="rent_form" align="center">
+        <h1>Rent</h1>
+        <form action="/users/rent/add" method="POST" autocomplete="off" class="rent" id="rent-form">
+            <label for="bname"><b>Book Name</b></label><br>
+            <input type="text" name="bname" required><br><br>
+
+            <label for="author"><b>Book Author</b></label><br>
+            <input type="text" name="author" required><br><br>
+
+            <label for="price"><b>Borrowing Price (per Day)</b></label><br>
+            <input type="number" name="price" required><br><br>
+
+            <label for="duration"><b>Borrowing Duration</b></label><br>
+            <input type="number" name="duration" required><br><br>
+
+            <label for="cprice"><b>Compensation Price</b></label><br>
+            <input type="number" name="cprice" required><br><br>
+
+            <label for="phno"><b>Contact Number</b></label><br>
+            <input type="tel" name="phno" required pattern="[0-9]{10}" value=<%= user.phno %>><br><br>
+
+            <label for="desc"><b>Description</b></label><br>
+            <input type="text" name="desc" required><br><br>
+            <input type="hidden" name="renter" value=<%= user.id %>>
+            <button type="submit">Submit</button><br>
+
+        </form>
+
+        <div id="maindiv">
+            <h1 id=renthist>History</h1>
+            <form style="padding-left:100px" method=get action=/users/rent id="filter-form">
+                <table class="table table-borderless" style="color:white; font-size:15px;">
+                    <tr>
+                        <td colspan=2><input type=text class="form-control" name="bnam" placeholder="Book name"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="form-check-input" type="radio" id="inlineCheckbox1" name="filter" value="ret"
+                                style="width:20px; height:20px;">
+                            <label for="inlineCheckbox1">Returned</label>
+                        </td>
+                        <td>
+                            <input class="form-check-input" type="radio" id="inlineCheckbox2" name="filter" value="req"
+                                style="width:20px; height:20px;">
+                            <label width=40px for="inlineCheckbox2">Requested</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="form-check-input" type="radio" id="inlineCheckbox3" name="filter" value="ren"
+                                style="width:20px; height:20px;">
+                            <label for="inlineCheckbox3">Rented</label>
+                        </td>
+                        <td>
+                            <input class="form-check-input" type="radio" id="inlineCheckbox4" name="filter" value="unr"
+                                style="width:20px; height:20px;">
+                            <label for="inlineCheckbox4">Unrequested</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan=2><input type="submit" class="btn btn-info" style="width:80px" id="filter-submit"
+                                value=Filter></td>
+                    </tr>
+                </table>
+
+            </form><br>
+            <% nbtn="btn-primary" %>
+            <% vbtn="btn-warning" %>
+            <% bbtn="btn-info" %>
+            <% rbtn="btn-success" %>
+            <% btncol = nbtn %>
+            <table class="table-head">
+                <tr style="background: linear-gradient(grey, rgb(77, 77, 77)); height:50px;">
+                    <th
+                        style="word-spacing: normal;height:50px; display:inline-block; text-align:left;  width:27.3%;margin-left:107px; padding-top:12.5px">
+                        Book Name</th>
+                    <th
+                        style="word-spacing: normal;height:50px; display:inline-block; text-align:left; width:27.3%; padding-top:12.5px">
+                        Author</th>
+                    <th
+                        style="word-spacing: normal;height:50px; display:inline-block; text-align:left; width:17.5%; padding-top:12.5px">
+                        Price</th>
+                    <th
+                        style="word-spacing: normal;height:50px; display:inline-block; text-align:left; padding-top:12.5px">
+                        Duration</th>
+                </tr>
+            </table>
+            <% for(let i of books){ %>
+
+            <% btncol = nbtn %>
+            <% if(i.borrower != null){btncol=bbtn} %>
+            <% if(i.Validatedborrower != null){btncol=vbtn} %>
+            <% if(i.returned == true){btncol=rbtn} %>
+            <!-- <table class="table-bordered table">
+                <tr>
+                    <td class=td> -->
+
+            <p>
+
+                <a class="btn <%= btncol %> bh" data-toggle="collapse" href="#<%= i.id %>" role="button"
+                    aria-expanded="false" aria-controls="collapseExample" style="display:block;margin:0 auto;">
+                    <!-- <span style="word-spacing: normal;">Transaction <%= i.id %></span> -->
+                    <span class="text-nowrap bd-highlight text-truncate"
+                        style="word-spacing: normal; width:20%;margin-left:40px; display:inline-block; text-align:left;"><%= i.bookname %></span>
+                    <span class="text-nowrap bd-highlight text-truncate"
+                        style="word-spacing: normal; width:20%; display:inline-block; text-align:left;"><%= i.bookauthor  %></span>
+                    <span class="text-nowrap bd-highlight text-truncate"
+                        style="word-spacing: normal; width:10%; display:inline-block; text-align:left;">Price:
+                        &#8377;<%= i.borrowprice %>/day</span>
+                    <span class="text-nowrap bd-highlight text-truncate"
+                        style="word-spacing: normal; width:15%; display:inline-block; text-align:left;">Duration:
+                        <%= i.borrowduration %>
+                        days</span>
+
+                </a>
+            </p>
+            <!-- </td>
+                </tr>
+            </table> -->
+            <div class="collapse" id="<%= i.id %>">
+                <table class="info-table"
+                    style=" margin: 0 auto; font-family:Verdana, Geneva, Tahoma, sans-serif; font-weight:bolder" >
+                    <tr>
+                        <td colspan=2>
+                            <% if (i.borrower==null && i.Validatedborrower==null && i.returned==false){ %>
+                            <a href="/users/delete?bd=<%= i._id %>" class="btn btn-primary"
+                                style="background-color: red; border: grey solid 2px"><img width=20px height=20px
+                                    src="../assets/images/delete.png"></a>
+                            <%}%>
+                        </td>
+                        
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            Book Name:
+                        </td>
+                        <td>
+                            <%= i.bookname %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Author:
+                        </td>
+                        <td>
+                            <%= i.bookauthor %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Price/day:
+                        </td>
+                        <td>
+                            &#8377;<%= i.borrowprice %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Duration:
+                        </td>
+                        <td>
+                            <%= i.borrowduration %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Compensation Price:
+                        </td>
+                        <td>
+                            &#8377;<%= i.compensationprice %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Contact Number:
+                        </td>
+                        <td>
+                            <%= i.phno %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Description:
+                        </td>
+                        <td style="max-width: 300px;">
+                            <%= i.description %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Borrow Request:
+                        </td>
+                        <td>
+                            <% if(i.borrower != null) { %>
+
+                            <a class="fp"
+                                href="http://localhost:8005/users/profile?q=<%= i.borrower.username %>"><%= i.borrower.name %></a><br><br>
+                            <a class="btn btn-success" style="display:inline"
+                                href="/users/validate?vid=<%= i.borrower.id %>&des=Y&bid=<%= i.id %>">Validate</a>
+                            <a class="btn btn-danger" style="display:inline"
+                                href="/users/validate?vid=<%= i.borrower.id %>&des=N&bid=<%= i.id %>">Decline</a>
+                            <% } %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Borrower:
+                        </td>
+                        <td>
+                            <% if(i.Validatedborrower != null) { %>
+
+                            <a class="fp"
+                                href="http://localhost:8005/users/profile?q=<%= i.Validatedborrower.username %>"><%= i.Validatedborrower.name %></a>
+                            <% } %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Borrow Date:
+                        </td>
+                        <td>
+                            <%= i.borrowdate %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Return Date:
+                        </td>
+                        <td>
+                            <%= i.returndate %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Total:
+                        </td>
+                        <td>
+                            <%= i.total %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            OTP:
+                        </td>
+                        <td>
+                            <%= i.OTP %>
+                        </td>
+                    </tr>
+
+                </table>
+                <br><br>
+            </div>
+            <% } %>
+        </div>
+
+
+        <div style="height:80px;"></div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>
+            $('#rent-form').on('submit', (function (e) {
+                window.location.hash = "";
+                e.preventDefault();
+                that = $(this);
+                console.log(that.serialize())
+                $.post('/users/rent/add', that.serialize());
+                that.trigger("reset");
+                $("#maindiv").load(document.URL + " #maindiv");
+            }));
+ 
+//function scrollFunction() {
+//  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+//    
+//    document.querySelector(".navbar").style.background = "none";
+//  } else {
+//   
+//    document.querySelector(".navbar").style.background = "none";
+//  }
+//}
+        </script>
+
+        <script>
+            var regex = /[?]/g;
+            //console.log("Location: "+window.location);
+            if (regex.test(window.location.href)) {
+                window.location.hash = "renthist";
+            }
+        </script>
+</body>
+
+</html>

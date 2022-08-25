@@ -1,0 +1,86 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div align="center">
+        <h1 class = "heading1">UPDATE PROFILE</h1>
+        <form action="/users/update-req" method="POST" onsubmit="Verify" class="signupform" align='left'>
+            <div class="container">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" size="30" required class="name" value="<%= user.name %>"><br><br>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" size="50" required class="email" value="<%= user.email %>"><br><br>
+            <label for="username">User Name</label>
+            <input type="text" id="username" name="username" size="30" required class="name" value="<%= user.username %>"><br><br>
+            <label for="pwd">Password</label>
+            <input type="password" id="pwd" name="pwd" required class="pwd" value="<%= user.password %>"><br><br>
+            <label for="phno">Phone Number</label>
+            <input type="tel" id="phno" name="phno" pattern="[0-9]{10}" required class="num" value="<%= user.phno %>"><br><br>
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="3"><%= user.address %> </textarea><br><br>
+            <button type="submit" >Update</button>
+            </div>
+        </form>
+        </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile</title>
+    <link href="../assets/css/styles.css" rel="stylesheet" >
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    <!-- Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+</head>
+<body id="page-top" class="signinbody">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top py-3" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#page-top">Book Look</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/users/profile">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/users/borrow">Borrow</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/users/return">Return</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/users/sign-out">Sign Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div align="center" class="rent_form update_page">
+        <h1 class = "heading1">Update Profile</h1>
+        <form action="/users/update-req" method="POST" onsubmit="Verify" >
+            <div class="container">
+            <label for="name">Name</label><br>
+            <input type="text" id="name" name="name" size="30" required class="name" value="<%= user.name %>"><br><br>
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email" size="50" required class="email" value="<%= user.email %>"><br><br>
+            <label for="username">User Name</label><br>
+            <input type="text" id="username" name="username" size="30" required class="name" value="<%= user.username %>"><br><br>
+            <label for="pwd">Password</label><br>
+            <input type="password" id="pwd" name="pwd" required class="pwd" value="<%= user.password %>"><br><br>
+            <label for="phno">Phone Number</label><br>
+            <input type="tel" id="phno" name="phno" pattern="[0-9]{10}" required class="num" value="<%= user.phno %>"><br><br>
+            <label for="address">Address:</label><br>
+            <textarea id="address" name="address" rows="3" cols="50"><%= user.address %> </textarea><br><br>
+            <button type="submit" >Update</button>
+            </div>
+        </form>
+        </div>
+</body>
+</html>
